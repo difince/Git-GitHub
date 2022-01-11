@@ -44,6 +44,33 @@ $ cat ~/.ssh/id_rsa.pub
 ```
 Copy the output. Go to your profile picture on the top right corner of your GitHub account, click on `Settings`. On the left hand side, click on `SSH and GPG keys`. Click the green button that says `New SSH key`. Enter a Title. Then paste the output above into the text box under Key. Click on the green button that says `Add SSH key`.
 
+## How to add GPG key
+```
+$ gpg --full-generate-key
+$ gpg --list-secret-keys --keyid-format=long
+$ gpg --armor --export 7B5C0E47BA87E3DA
+$ cd ..
+$ gpg --armor --export 7B5C0E47BA87E3DA
+```
+
+From the list of GPG keys, copy the long form of the GPG key ID you'd like to use. In this example, the GPG key ID is 3AA5C34371567BD2:
+
+```
+$ gpg --list-secret-keys --keyid-format=long
+/Users/hubot/.gnupg/secring.gpg
+------------------------------------
+sec   4096R/3AA5C34371567BD2 2016-03-10 [expires: 2017-03-10]
+uid                          Hubot 
+ssb   4096R/42B317FD4BA89E7A 2016-03-10
+Paste the text below, substituting in the GPG key ID you'd like to use. In this example, the GPG key ID is 3AA5C34371567BD2:
+```
+
+Prints the GPG key ID, in ASCII armor format
+```
+$ gpg --armor --export 3AA5C34371567BD2
+Copy your GPG key, beginning with -----BEGIN PGP PUBLIC KEY BLOCK----- and ending with -----END PGP PUBLIC KEY BLOCK-----.
+```
+
 ## How to submit PRs with your GitHub fork
 
 You have forked the Open Source project you want to contribute to on GitHub. Now what?
