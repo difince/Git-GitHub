@@ -49,8 +49,6 @@ Copy the output. Go to your profile picture on the top right corner of your GitH
 $ gpg --full-generate-key
 $ gpg --list-secret-keys --keyid-format=long
 $ gpg --armor --export 7B5C0E47BA87E3DA
-$ cd ..
-$ gpg --armor --export 7B5C0E47BA87E3DA
 ```
 
 From the list of GPG keys, copy the long form of the GPG key ID you'd like to use. In this example, the GPG key ID is 3AA5C34371567BD2:
@@ -91,7 +89,7 @@ Once you've completed your work, it's time to commit your changes.
 
 ```
 $ git add <files>
-$ git commit -s
+$ git commit -s -S
 ```
 
 Good commit messages are usually formatted in this way:
@@ -141,6 +139,11 @@ The maintainer of the original project asks you to make some changes to your PR.
 ```
 $ git add <files>
 $ git commit --amend
+```
+
+If you forgot to sign with GPG your commit, use:
+```
+git commit -S --amend
 ```
 
 Make changes to the commit message if you need to.
